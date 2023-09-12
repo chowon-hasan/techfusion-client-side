@@ -1,0 +1,182 @@
+@media screen and (min-width: 1280px) and (max-width: 1440px) {
+  .leftNav {
+    width: 20% !important;
+    left: 50px !important;
+  }
+  .rightNav {
+    width: 20% !important;
+    right: 5% !important;
+  }
+  .mainBody,
+  .qustions,
+  .tagss,
+  .users,
+  .market,
+  .projects,
+  .inbox,
+  .bookmark,
+  .helpcenter,
+  .quiz {
+    width: 35em !important;
+    margin: auto;
+  }
+  .navbar-center {
+    width: 45%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .rightNav,
+  .leftNav {
+    display: none;
+  }
+  .hides {
+    display: none;
+  }
+  .navbar {
+    justify-content: space-between;
+  }
+  .mainBody {
+    width: 100% !important;
+  }
+  .reaction-center {
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .posst-user {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .body-cont {
+    padding: 15px;
+  }
+  .entry-dash,
+  .personal_dash,
+  .create_dash,
+  .recharts_cont,
+  .flowchart_cont,
+  .mypost_cont,
+  .card-1-mypost,
+  .card-2-mypost {
+    width: 100%;
+  }
+  .entry-cont,
+  .allpost_dash,
+  .mypost_card {
+    flex-direction: column;
+  }
+  .mypost_card {
+    padding: 20px;
+  }
+  .entry-card {
+    width: 100%;
+    margin: 15px 0;
+  }
+  .allpost_dash {
+    padding: 0;
+  }
+  .recharts-surface {
+    margin: auto;
+    width: 100%;
+  }
+  .recharts-wrapper {
+    width: 60% !important;
+    margin: auto;
+  }
+  .recharts-legend-wrapper,
+  .bookmark,
+  .qustions,
+  .tagss,
+  .users,
+  .market,
+  .projects,
+  .sign_section {
+    width: 100% !important;
+  }
+  .recharts_cont {
+  }
+  .myinbox-chathead,
+  .inbox {
+    width: 100%;
+  }
+  .inbox,
+  .bookmark,
+  .helpcenter,
+  .qustions,
+  .tagss,
+  .users,
+  .market,
+  .projects {
+    margin: 0 10px;
+  }
+
+  .chat_body {
+    flex-direction: column;
+    width: 100%;
+  }
+  .book_cont {
+    flex-direction: column;
+  }
+  .book_img {
+    width: 100%;
+    margin: 20px 0;
+  }
+  .allqus_cont,
+  .tags_cont,
+  .users_cont,
+  .market_cont {
+    display: inline;
+  }
+  .project_cont {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+  }
+  .pro_card {
+    margin: auto;
+  }
+  .qustion_body,
+  .tags_body,
+  .users_body,
+  .market_body {
+    margin-bottom: 15px;
+  }
+  .sign_section {
+    padding: 40px 15px;
+  }
+  .sign_cont {
+    flex-direction: column;
+  }
+  .sign_body,
+  .sign_body-2,
+  .sign_form_body {
+    width: 100%;
+  }
+  .log_section {
+    width: 100% !important;
+    padding: 40px 15px;
+  }
+  .login_cont {
+    flex-direction: column;
+  }
+  .login_card {
+    width: 100%;
+  }
+  .login_form {
+    width: 100%;
+  }
+  .login_form_body {
+    width: 100%;
+  }
+  .rightnavParent {
+    width: 100% !important;
+  }
+  .navbar_left {
+    background-color: #1d232a !important;
+    color: #ffffff !important;
+  }
+}

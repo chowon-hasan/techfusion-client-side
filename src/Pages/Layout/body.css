@@ -1,0 +1,13 @@
+.leftNav {
+  width: 350px;
+  position: fixed;
+  left: 10%;
+}
+.mainBody {
+  width: 680px;
+}
+.rightNav {
+  width: 300px;
+  position: fixed;
+  right: 8%;
+}

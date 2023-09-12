@@ -1,0 +1,8 @@
+.rightnavParent {
+  height: 79vh;
+  overflow: scroll;
+  width: 300px;
+}
+::-webkit-scrollbar {
+  height: 0px !important;
+}

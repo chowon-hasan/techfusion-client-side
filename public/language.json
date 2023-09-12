@@ -1,0 +1,114 @@
+[
+  {
+    "name": "JavaScript",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png"
+  },
+  {
+    "name": "Python",
+    "image": "https://e1.pxfuel.com/desktop-wallpaper/878/918/desktop-wallpaper-coding-backgrounds-python-python-logo.jpg"
+  },
+  {
+    "name": "Java",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdnNhR1XZ5Cesevd_TJpY-oioi7vDctlahw1N6Kfj5CP8Hl0mHkLszxuvxWIJmNtivnVM&usqp=CAU"
+  },
+  {
+    "name": "C",
+    "image": "https://miro.medium.com/v2/resize:fit:500/0*tKwj6cwBVAphhV9B.jpg"
+  },
+  {
+    "name": "C++",
+    "image": "https://www.nicepng.com/png/detail/981-9813175_c-logo-c-programming-language-logo.png"
+  },
+  {
+    "name": "C#",
+    "image": "https://studyopedia.com/wp-content/uploads/2023/01/Csharp-Tutorial-Studyopedia.png"
+  },
+  {
+    "name": "Ruby",
+    "image": "https://www.devopsschool.com/blog/wp-content/uploads/2022/03/eb9e3b7dab09358e7cf13f188f64f9f4.png"
+  },
+  {
+    "name": "Swift",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_IZ0NgYwAKMbnCcWyNJoCGu9WFf2uGg97sUdtI0uAHGjF-C369250eTanH40ReBgRTM&usqp=CAU"
+  },
+  {
+    "name": "Kotlin",
+    "image": "https://ih1.redbubble.net/image.2335603681.6757/st,small,845x845-pad,1000x1000,f8f8f8.jpg"
+  },
+  {
+    "name": "Go",
+    "image": "https://miro.medium.com/v2/resize:fit:2000/1*30aoNxlSnaYrLhBT0O1lzw.png"
+  },
+  {
+    "name": "Rust",
+    "image": "https://www.vectorlogo.zone/logos/rust-lang/rust-lang-ar21.png"
+  },
+  {
+    "name": "PHP",
+    "image": "https://pngimg.com/d/php_PNG25.png"
+  },
+  {
+    "name": "TypeScript",
+    "image": "https://cdn.thenewstack.io/media/2022/01/10b88c68-typescript-logo.png"
+  },
+  {
+    "name": "HTML",
+    "image": "https://cdn.educba.com/academy/wp-content/uploads/2018/09/Top-Uses-Of-HTML.jpg"
+  },
+  {
+    "name": "CSS",
+    "image": "https://colorlib.com/wp/wp-content/uploads/sites/2/creative-css3-tutorials.jpg"
+  },
+  {
+    "name": "SQL",
+    "image": "https://miro.medium.com/v2/resize:fit:750/0*7xVXIgq8aSrMSKdK.png"
+  },
+  {
+    "name": "React",
+    "image": "https://latitudetechnolabs.com/wp-content/uploads/2022/05/ReactJS-logo.png"
+  },
+  {
+    "name": "Angular",
+    "image": "https://codewithfaraz.com/img/what%20is%20angularjs%20an%20introduction%20into%20the%20world%20of%20angular.png"
+  },
+  {
+    "name": "Vue.js",
+    "image": "https://geekvibesnation.com/wp-content/uploads/2022/07/1_OrjCKmou1jT4It5so5gvOA.jpeg"
+  },
+  {
+    "name": "Node.js",
+    "image": "https://www.devteam.space/wp-content/uploads/2022/05/nodejs.jpg"
+  },
+  {
+    "name": "Ruby on Rails",
+    "image": "https://res.cloudinary.com/practicaldev/image/fetch/s--jvDLhx0b--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/cpcr5w0kgl6j94tss7n9.png"
+  },
+  {
+    "name": "Django",
+    "image": "https://d1wrxu8gicsgam.cloudfront.net/wp-content/files/django-logo-big.jpg"
+  },
+  {
+    "name": "Spring Boot",
+    "image": "https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto/gigs/258798612/original/80894dc14ca98d6e81ba3b887ba695c19291f770.png"
+  },
+  {
+    "name": ".NET",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/1024px-Microsoft_.NET_logo.svg.png"
+  },
+  {
+    "name": "Laravel",
+    "image": "https://cdn.my-mooc.com/media/cache/catalog_product_360x200/mooc/logo/73e5fba2511141ad3d02a8a829c8a1d2309eb52a.png"
+  },
+  {
+    "name": "Express.js",
+    "image": "https://blog.amt.in/wp-content/uploads/2017/12/e16da876-c2fd-4eb8-ae72-4b193c534938-Edited.png"
+  },
+  {
+    "name": "TensorFlow",
+    "image": "https://miro.medium.com/v2/resize:fit:1000/0*LDGNE2IRJOFFcJ3s.png"
+  },
+  {
+    "name": "PyTorch",
+    "image": "https://miro.medium.com/v2/resize:fit:691/1*VSQ0XEywxSgZBwW05GsZtw.png"
+  }
+]
