@@ -125,6 +125,21 @@ const Dashboard = () => {
                     Log Out
                   </button>
                 </div>
+                <div className="mt-8 text-center">
+                  <p className="text-sm">
+                    Powred by{" "}
+                    <Link
+                      className="text-lime-300"
+                      to="https://portfolio-of-mehedi-hasan-chowon.netlify.app/"
+                      target="_blank"
+                    >
+                      Chowon Hasan
+                    </Link>
+                  </p>
+                  <p className="text-xs">
+                    © 2023 All rights reserved - TechFusion
+                  </p>
+                </div>
               </div>
             </div>
           </div>

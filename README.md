@@ -63,4 +63,12 @@ TechFusion is a versatile web application that combines the best features of pla
 
 - Thank you for joining me on this adventure. Happy coding! 🚀
 
+### My portfolio
+
+- [Portfolio](https://portfolio-of-mehedi-hasan-chowon.netlify.app/)
+
+## Project Duration till now
+
+- 14 days
+
 Live Site : [TechFusion](https://techfusion-by-chowon-hasan.netlify.app/)

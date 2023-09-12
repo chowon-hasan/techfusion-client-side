@@ -22,6 +22,8 @@ const UsersAll = () => {
     users?.email,
     "userinfoemail2"
   );
+  const [data] = FetchData || [];
+  const { image } = data || {};
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -154,7 +156,11 @@ const UsersAll = () => {
                 {user?.inbox && (
                   <div className="my-3 ms-2">
                     <img
-                      src={FetchData?.map((c) => c.image)}
+                      src={
+                        image
+                          ? image
+                          : "https://i.ibb.co/fvJSJ4P/User-Circle.png"
+                      }
                       style={{
                         width: "25px",
                         height: "25px",

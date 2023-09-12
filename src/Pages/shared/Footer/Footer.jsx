@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 //
 const Footer = () => {
   return (
     <section className="relative bg-slate-900">
-      <div className="container mx-auto">
+      <div className="container mx-auto pb-5">
         <footer className="footer p-10 text-white">
           <div className="">
             <span className="footer-title">Services</span>
@@ -43,6 +45,19 @@ const Footer = () => {
             </div>
           </div>
         </footer>
+        <div className="text-center">
+          <p className="text-sm">
+            Powred by{" "}
+            <Link
+              className="text-lime-300"
+              to="https://portfolio-of-mehedi-hasan-chowon.netlify.app/"
+              target="_blank"
+            >
+              Chowon Hasan
+            </Link>
+          </p>
+          <p className="text-xs">© 2023 All rights reserved - TechFusion</p>
+        </div>
       </div>
     </section>
   );
