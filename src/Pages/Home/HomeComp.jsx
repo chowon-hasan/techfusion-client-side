@@ -23,6 +23,7 @@ const HomeComp = () => {
   const [userHistory, setUserHistory] = useState([]);
   const [disabled, setDisabled] = useState({});
   const [bookedmarkDis, setBookmarkedDis] = useState({});
+  // const [loadingss, setLoadingss] = useState(true);
 
   const { data: FetchData } = useFetch2(
     "userinfoemail",
@@ -163,6 +164,10 @@ const HomeComp = () => {
               items-center"
           >
             <CircleLoader size={100} color="#36d7b7" />
+            <div className="mt-5 text-center">
+              <p>Please wait a moment...</p>
+              <p>Internet connection is week or you can reload this page.</p>
+            </div>
           </div>
         ) : (
           data?.map((c, i) => (

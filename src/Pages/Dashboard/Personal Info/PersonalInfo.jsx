@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../Authprovider/Auth";
 import useFetch2 from "../../../Hooks/useFetch2";
 import { ToastContainer, toast } from "react-toastify";
 const imageAPI = import.meta.env.VITE_IMAGEAPI;
+import { BeatLoader } from "react-spinners";
 
 const PersonalInfo = () => {
   const imageURLPer = `https://api.imgbb.com/1/upload?key=${imageAPI}`;
@@ -15,6 +16,8 @@ const PersonalInfo = () => {
     "userinfoemail"
   );
 
+  const [loading, setLoading] = useState(false);
+
   const [infos] = FetchData || [];
   const { image } = infos || [];
 
@@ -23,6 +26,7 @@ const PersonalInfo = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
+    setLoading(true);
     const formData = new FormData();
     formData.append("image", data.image[0]);
     fetch(imageURLPer, {
@@ -55,6 +59,7 @@ const PersonalInfo = () => {
               reset();
               toast("Changes completed");
               window.location.reload();
+              setLoading(false);
             });
         }
       });
@@ -154,12 +159,31 @@ const PersonalInfo = () => {
               className="block w-full mb-5 p-2 bg-transparent text-white border border-lime-900"
               {...register("bio")}
             />
-
+            {/* 
             <input
               className="btn btn-wide bg-transparent border border-lime-300 text-white"
               type="submit"
               value="Apply Changes"
-            />
+            /> */}
+            <button
+              type="submit"
+              className="btn btn-wide bg-slate-950 border border-lime-300 text-white mt-5"
+            >
+              {loading ? (
+                <div
+                  className="
+                            h-[10px]
+                            flex 
+                            flex-col 
+                            justify-center 
+                            items-center"
+                >
+                  <BeatLoader size={10} color="#fff" />
+                </div>
+              ) : (
+                "apply changes"
+              )}
+            </button>
           </form>
         </div>
         <div className="mt-3">

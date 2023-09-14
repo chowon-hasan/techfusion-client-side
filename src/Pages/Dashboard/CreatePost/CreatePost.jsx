@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import useFetch from "../../../Hooks/useFetch";
 import useFetch2 from "../../../Hooks/useFetch2";
 const imageAPI = import.meta.env.VITE_IMAGEAPI;
+import { BeatLoader } from "react-spinners";
 
 const CreatePost = () => {
   const imageURL = `https://api.imgbb.com/1/upload?key=${imageAPI}`;
@@ -20,14 +21,16 @@ const CreatePost = () => {
     users?.email,
     "userinfoEmail"
   );
-  // const { FetchData } = useFetch("userinfoEmail", users?.email);
 
   const [info] = FetchData || [];
   const { name, image } = info || [];
 
+  const [loading, setLoading] = useState(false);
+
   console.log(name, image);
 
   const onSubmit = (data) => {
+    setLoading(true);
     data.keywords = selectedOption;
     const formData = new FormData();
     formData.append("image", data.image[0]);
@@ -67,6 +70,7 @@ const CreatePost = () => {
               reset();
               toast("Your post is now in feed");
               console.log(data);
+              setLoading(false);
             });
         } else {
           const { title, description, codeSnippet } = data;
@@ -176,10 +180,29 @@ const CreatePost = () => {
         />
         {/* errors will return when field validation fails  */}
         {/* {errors.title && <span>This field is required</span>} */}
-        <input
+        {/* <input
           className="btn btn-wide bg-slate-950 border border-lime-300 text-white mt-5"
           type="submit"
-        />
+        /> */}
+        <button
+          type="submit"
+          className="btn btn-wide bg-slate-950 border border-lime-300 text-white mt-5"
+        >
+          {loading ? (
+            <div
+              className="
+                            h-[10px]
+                            flex 
+                            flex-col 
+                            justify-center 
+                            items-center"
+            >
+              <BeatLoader size={10} color="#fff" />
+            </div>
+          ) : (
+            "post now"
+          )}
+        </button>
       </form>
       <div className="my-3">
         <p>

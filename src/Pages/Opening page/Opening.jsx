@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Authprovider/Auth";
 import logo from "../../assets/logo-light.png";
+import { BeatLoader } from "react-spinners";
+
 const Opening = () => {
   //   const [regError, setRegError] = useState("");
   const navigate = useNavigate();
-  const { createUser } = useContext(AuthContext);
+  const { createUser, loading, setLoading } = useContext(AuthContext);
   const [signUpTimestamp, setSignUpTimestamp] = useState(null);
   const [regError, setRegError] = useState("");
   const {
@@ -17,6 +19,7 @@ const Opening = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     const timestamp = new Date();
     setSignUpTimestamp(timestamp);
     createUser(data.email, data.password, data.name)
@@ -43,6 +46,7 @@ const Opening = () => {
           });
       })
       .catch((error) => {
+        setLoading(false);
         setRegError(error.message);
       });
   };
@@ -112,10 +116,29 @@ const Opening = () => {
                 )}
 
                 <div className="text-center">
-                  <input
+                  {/* <input
                     className="btn btn-wide bg-lime-600 hover:bg-white hover:text-black border-0 text-white"
                     type="submit"
-                  />
+                  /> */}
+                  <button
+                    type="submit"
+                    className="btn btn-wide bg-lime-600 hover:bg-white hover:text-black border-0 text-white"
+                  >
+                    {loading ? (
+                      <div
+                        className="
+                            h-[10px]
+                            flex 
+                            flex-col 
+                            justify-center 
+                            items-center"
+                      >
+                        <BeatLoader size={10} color="#000" />
+                      </div>
+                    ) : (
+                      "Sign up"
+                    )}
+                  </button>
                 </div>
               </form>
               <div className="text-center mt-5 text-black">

@@ -5,13 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import logo from "../../assets/logo-light.png";
+import { BeatLoader } from "react-spinners";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
-
+  const { signInUser, loading, setLoading } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState();
-
   const navigate = useNavigate();
+  const [loadings, setloadings] = useState(true);
 
   const {
     register,
@@ -30,6 +30,7 @@ const Login = () => {
       })
       .catch((err) => {
         setErrorMessage(err.message);
+        setLoading(false);
       });
   };
 
@@ -121,10 +122,29 @@ const Login = () => {
                 )}
 
                 <div className="text-center">
-                  <input
+                  {/* <input
                     className="btn btn-wide border-0 bg-lime-600 text-white hover:bg-white hover:text-black"
                     type="submit"
-                  />
+                  /> */}
+                  <button
+                    type="submit"
+                    className="btn btn-wide bg-lime-600 hover:bg-white hover:text-black border-0 text-white"
+                  >
+                    {loading ? (
+                      <div
+                        className="
+                            h-[10px]
+                            flex 
+                            flex-col 
+                            justify-center 
+                            items-center"
+                      >
+                        <BeatLoader size={10} color="#000" />
+                      </div>
+                    ) : (
+                      "Log in"
+                    )}
+                  </button>
                 </div>
               </form>
               <div className="text-center mt-5 text-black">
