@@ -17,7 +17,7 @@ import useFetch2 from "../../Hooks/useFetch2";
 //
 const HomeComp = () => {
   const textareaRef = useRef();
-  const { data, isloading, refetch } = useUpmark();
+  const { data, isLoading, refetch } = useUpmark();
   const { users } = useContext(AuthContext);
   const [inputShow, setInputShow] = useState(false);
   const [userHistory, setUserHistory] = useState([]);
@@ -153,7 +153,7 @@ const HomeComp = () => {
   return (
     <div className="container mx-auto">
       <div className="">
-        {isloading && (
+        {isLoading ? (
           <div
             className="
               h-[70vh]
@@ -164,209 +164,216 @@ const HomeComp = () => {
           >
             <CircleLoader size={100} color="#36d7b7" />
           </div>
-        )}
-      </div>
-      {data?.map((c, i) => (
-        <div
-          key={i}
-          className="p-4 mb-5 rounded"
-          style={{ backgroundColor: "#0F172A" }}
-        >
-          <h1 className="font-bold">
-            <span className="text-lime-300">Q.</span> {c.title}
-          </h1>
-          <p className="text-sm">{c.description}</p>
-          <div className="flex">
-            {c.keywords &&
-              c.keywords.map((keys, j) => (
-                <p className="text-sm px-1 me-3 my-3" key={j}>
-                  <span className="text-lime-300">#</span>
-                  {keys.value}
-                </p>
-              ))}
-          </div>
-          {c.image && (
-            <div>
-              <img
-                style={{ width: "100%", height: "300px" }}
-                className="mb-3"
-                src={c.image}
-                alt=""
-              />
-            </div>
-          )}
-          {c.codeSnippet == "CodeSnippet" ? (
-            ""
-          ) : (
+        ) : (
+          data?.map((c, i) => (
             <div
-              className="bg-gray-700 p-3 my-3"
-              style={{
-                maxHeight: "300px",
-                overflow: "auto",
-              }}
+              key={i}
+              className="p-4 mb-5 rounded"
+              style={{ backgroundColor: "#0F172A" }}
             >
-              <pre>
-                <code className="text-sm">{c.codeSnippet}</code>
-              </pre>
-            </div>
-          )}
-          <div className="flex justify-between reaction-center">
-            <div className="flex">
-              <p className="me-12 text-sm"> upmarks {c?.upMark}</p>
-              <p className="me-12 text-sm"> downmarks {c?.downMark}</p>
-              <p className="text-sm">Answers {c?.comments?.length || 0}</p>
-            </div>
-            <div className="flex justify-around items-center posst-user">
-              <img
-                style={{
-                  height: "20px",
-                  width: "20px",
-                  borderRadius: "100%",
-                }}
-                src={c?.userImg}
-                alt=""
-              />
-              {c.user && <p className="text-xs ms-2">{c?.user}</p>}
-            </div>
-          </div>
-
-          {/* --------------------------------------------------------------- */}
-
-          <div className="border-t mt-3">
-            <div className="flex justify-between rounded border-gray-300 p-2">
-              <button
-                onClick={() => handleUpmark(c._id)}
-                title="This post shows efforts and research and its usefull."
-                disabled={disabled[c._id]}
-              >
-                <span className="reaction_icons">
-                  {c.upMark ? <BiSolidUpArrow /> : <BiUpArrow />}
-                </span>
-              </button>
-              <button
-                onClick={() => handleDownmark(c._id)}
-                title="This post dosn't shows any efforts and research and its unusefull."
-                disabled={disabled[c._id]}
-              >
-                <span className="reaction_icons">
-                  {c.downMark ? <BiSolidDownArrow /> : <BiDownArrow />}
-                </span>
-              </button>
-
-              <button onClick={handleComment}>
-                <span className="reaction_icons">
-                  <FaDashcube
-                    className={`${inputShow ? "text-lime-300" : ""}`}
+              <h1 className="font-bold">
+                <span className="text-lime-300">Q.</span> {c.title}
+              </h1>
+              <p className="text-sm">{c.description}</p>
+              <div className="flex">
+                {c.keywords &&
+                  c.keywords.map((keys, j) => (
+                    <p className="text-sm px-1 me-3 my-3" key={j}>
+                      <span className="text-lime-300">#</span>
+                      {keys.value}
+                    </p>
+                  ))}
+              </div>
+              {c.image && (
+                <div>
+                  <img
+                    style={{ width: "100%", height: "300px" }}
+                    className="mb-3"
+                    src={c.image}
+                    alt=""
                   />
-                </span>
-              </button>
-              <button
-                onClick={() => handleBookmark(c._id, i)}
-                disabled={bookedmarkDis[c._id]}
-              >
-                <span className="reaction_icons">
-                  <FaBookmark />
-                </span>
-              </button>
-            </div>
-            <div className={`mb-5 ${inputShow ? "" : "hidden"}`}>
-              <form
-                onSubmit={(event) => handleSubmit(event, c._id)}
-                className="w-full flex items-center"
-              >
-                <textarea
-                  rows="1"
-                  name="comment"
-                  className="bg-slate-900 border my-2 w-full p-1 me-3 rounded text-sm"
-                  style={{ width: "85%" }}
-                  id="commentTextarea"
-                  ref={textareaRef}
-                />
-                <input
+                </div>
+              )}
+              {c.codeSnippet == "CodeSnippet" ? (
+                ""
+              ) : (
+                <div
+                  className="bg-gray-700 p-3 my-3"
                   style={{
-                    width: "15%",
+                    maxHeight: "300px",
+                    overflow: "auto",
                   }}
-                  className="btn btn-sm bg-white text-black text-xs"
-                  type="submit"
-                  value="comments"
-                />
-              </form>
-            </div>
-            <div className="">
-              <div className="">
-                <p className="text-sm mb-5 mt-1">All comments</p>
-                {c?.comments ? (
-                  c?.comments
-                    ?.slice()
-                    .sort(
-                      (a, b) =>
-                        new Date(b.time).getTime() - new Date(a.time).getTime()
-                    )
-                    .map((m, x) => (
-                      <div key={x} className="flex">
-                        <div className="">
-                          {m.commentorImg ? (
-                            <img
+                >
+                  <pre>
+                    <code className="text-sm">{c.codeSnippet}</code>
+                  </pre>
+                </div>
+              )}
+              <div className="flex justify-between reaction-center">
+                <div className="flex">
+                  <p className="me-12 text-sm"> upmarks {c?.upMark}</p>
+                  <p className="me-12 text-sm"> downmarks {c?.downMark}</p>
+                  <p className="text-sm">Answers {c?.comments?.length || 0}</p>
+                </div>
+                <div className="flex justify-around items-center posst-user">
+                  <img
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      borderRadius: "100%",
+                    }}
+                    src={c?.userImg}
+                    alt=""
+                  />
+                  {c.user && <p className="text-xs ms-2">{c?.user}</p>}
+                </div>
+              </div>
+
+              {/* --------------------------------------------------------------- */}
+
+              <div className="border-t mt-3">
+                <div className="flex justify-between rounded border-gray-300 p-2">
+                  <button
+                    onClick={() => handleUpmark(c._id)}
+                    title="This post shows efforts and research and its usefull."
+                    disabled={disabled[c._id]}
+                  >
+                    <span className="reaction_icons">
+                      {c.upMark ? <BiSolidUpArrow /> : <BiUpArrow />}
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => handleDownmark(c._id)}
+                    title="This post dosn't shows any efforts and research and its unusefull."
+                    disabled={disabled[c._id]}
+                  >
+                    <span className="reaction_icons">
+                      {c.downMark ? <BiSolidDownArrow /> : <BiDownArrow />}
+                    </span>
+                  </button>
+
+                  <button onClick={handleComment}>
+                    <span className="reaction_icons">
+                      <FaDashcube
+                        className={`${inputShow ? "text-lime-300" : ""}`}
+                      />
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => handleBookmark(c._id, i)}
+                    disabled={bookedmarkDis[c._id]}
+                  >
+                    <span className="reaction_icons">
+                      <FaBookmark />
+                    </span>
+                  </button>
+                </div>
+                <div className={`mb-5 ${inputShow ? "" : "hidden"}`}>
+                  <form
+                    onSubmit={(event) => handleSubmit(event, c._id)}
+                    className="w-full flex items-center"
+                  >
+                    <textarea
+                      rows="1"
+                      name="comment"
+                      className="bg-slate-900 border my-2 w-full p-1 me-3 rounded text-sm"
+                      style={{ width: "85%" }}
+                      id="commentTextarea"
+                      ref={textareaRef}
+                    />
+                    <input
+                      style={{
+                        width: "15%",
+                      }}
+                      className="btn btn-sm bg-white text-black text-xs"
+                      type="submit"
+                      value="comments"
+                    />
+                  </form>
+                </div>
+                <div className="">
+                  <div className="">
+                    <p className="text-sm mb-5 mt-1">All comments</p>
+                    {c?.comments ? (
+                      c?.comments
+                        ?.slice()
+                        .sort(
+                          (a, b) =>
+                            new Date(b.time).getTime() -
+                            new Date(a.time).getTime()
+                        )
+                        .map((m, x) => (
+                          <div key={x} className="flex">
+                            <div className="">
+                              {m.commentorImg ? (
+                                <img
+                                  style={{
+                                    width: "30px",
+                                    borderRadius: "100%",
+                                    height: "30px",
+                                    marginRight: "5px",
+                                  }}
+                                  src={
+                                    m.commentorImg
+                                      ? m.commentorImg
+                                      : "https://i.ibb.co/fvJSJ4P/User-Circle.png"
+                                  }
+                                  alt=""
+                                />
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                            <div
                               style={{
-                                width: "30px",
-                                borderRadius: "100%",
-                                height: "30px",
-                                marginRight: "5px",
+                                border: "1px solid #afafaf",
+                                borderRadius: "10px",
+                                marginBottom: "20px",
+                                padding: "8px",
+                                width: "95%",
+                                wordBreak: "break-word",
                               }}
-                              src={
-                                m.commentorImg
-                                  ? m.commentorImg
-                                  : "https://i.ibb.co/fvJSJ4P/User-Circle.png"
-                              }
-                              alt=""
-                            />
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                        <div
-                          style={{
-                            border: "1px solid #afafaf",
-                            borderRadius: "10px",
-                            marginBottom: "20px",
-                            padding: "8px",
-                            width: "95%",
-                            wordBreak: "break-word",
-                          }}
-                          className=""
-                        >
-                          <div className="comment-text">
-                            <p className="text-sm">{m.comment}</p>
-                          </div>
-                          <div className="flex items-center justify-between border-t mt-2">
-                            <div className="mt-1">
-                              <p>
-                                <span className="text-lime-300 text-xs">
-                                  {new Date(m?.time).toLocaleString("en-US", {
-                                    month: "short",
-                                    day: "2-digit",
-                                    year: "numeric",
-                                  })}
-                                </span>
-                              </p>
-                            </div>
-                            <div className="flex items-center mt-2">
-                              <p className="text-xs ms-3">{m.commentuser}</p>
+                              className=""
+                            >
+                              <div className="comment-text">
+                                <p className="text-sm">{m.comment}</p>
+                              </div>
+                              <div className="flex items-center justify-between border-t mt-2">
+                                <div className="mt-1">
+                                  <p>
+                                    <span className="text-lime-300 text-xs">
+                                      {new Date(m?.time).toLocaleString(
+                                        "en-US",
+                                        {
+                                          month: "short",
+                                          day: "2-digit",
+                                          year: "numeric",
+                                        }
+                                      )}
+                                    </span>
+                                  </p>
+                                </div>
+                                <div className="flex items-center mt-2">
+                                  <p className="text-xs ms-3">
+                                    {m.commentuser}
+                                  </p>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    ))
-                ) : (
-                  <>
-                    <p className="text-sm text-lime-300">No comments yet</p>
-                  </>
-                )}
+                        ))
+                    ) : (
+                      <>
+                        <p className="text-sm text-lime-300">No comments yet</p>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      ))}
+          ))
+        )}
+      </div>
       <ToastContainer />
     </div>
   );
